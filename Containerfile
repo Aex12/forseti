@@ -3,7 +3,7 @@ FROM scratch AS ctx
 COPY build_files /
 
 # Base Image
-FROM ghcr.io/ublue-os/kinoite-main:43
+FROM ghcr.io/ublue-os/aurora-dx:43
 
 ### [IM]MUTABLE /opt
 ## Some bootable images, like Fedora, have /opt symlinked to /var/opt, in order to
