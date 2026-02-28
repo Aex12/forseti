@@ -11,12 +11,12 @@ set -euo pipefail
 #   run         - (optional) Multiline bash script to run after download completes
 #                 Has access to $TAG and $DEST_DIR
 
-REPOSITORY=$(echo "$1" | yq -r 'try .["repo"]')
-TAG=$(echo "$1" | yq -r 'try .["tag"]')
-mapfile -t ASSET_PATTERNS < <(echo "$1" | yq -r 'try .assets[] // empty')
-DEST_DIR=$(echo "$1" | yq -r 'try .["dest_dir"] // "/tmp"') # default to /tmp if not provided
-REUSE_EXISTING=$(echo "$1" | yq -r 'try .["reuse_existing"] // "true"') # default to true
-RUN=$(echo "$1" | yq -r 'try .run // empty')
+REPOSITORY=$(echo "$1" | yq -r '.repo')
+TAG=$(echo "$1" | yq -r '.tag')
+mapfile -t ASSET_PATTERNS < <(echo "$1" | yq -r '.assets // [] | .[]')
+DEST_DIR=$(echo "$1" | yq -r '.dest_dir // "/tmp"') # default to /tmp if not provided
+REUSE_EXISTING=$(echo "$1" | yq -r '.reuse_existing // "true"') # default to true
+RUN=$(echo "$1" | yq -r '.run // ""')
 
 if [[ -z "$REPOSITORY" || "$REPOSITORY" == "null" ]]; then
     echo "ERROR: 'repo' is required (e.g. 'owner/repo')" >&2
