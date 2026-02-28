@@ -1,13 +1,13 @@
 # forseti
 An atomic Linux distribution based on Aurora-DX. Adds a few packages that I miss from the official build
 
-## Switch Image
+## Install
 
-From your bootc system, run the following command.
+First, install the Aurora image (Nvidia systems not supported), then run the following command.
 ```bash
 sudo bootc switch ghcr.io/aex12/forseti
 ```
-This should queue your image for the next reboot, which you can do immediately after the command finishes. You have officially set up your custom image! See the following section for an explanation of the important parts of the template for customization.
+This should queue your image for the next reboot, which you can do immediately after the command finishes
 
 ## Building The Image
 
