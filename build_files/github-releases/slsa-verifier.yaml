@@ -1,0 +1,11 @@
+repo: getsops/sops
+tag: latest
+dest_dir: /var/cache/downloads
+reuse_existing: false
+assets: 
+  - slsa-verifier-linux-amd64
+  - slsa-verifier-linux-amd64.intoto.jsonl
+run: |
+  curl -s https://raw.githubusercontent.com/slsa-framework/slsa-verifier/refs/heads/main/SHA256SUM.md | head -n 9 > "slsa-verifier-checksums.txt"
+  sha256sum -c "slsa-verifier-checksums.txt" --ignore-missing
+  install -m 755 "slsa-verifier-linux-amd64" /usr/bin/slsa-verifier
