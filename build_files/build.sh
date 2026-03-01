@@ -2,9 +2,6 @@
 
 set -ouex pipefail
 
-# native apps
-dnf5 install -y mpv qbittorrent
-
 # command line tools (avoid installing weak deps such as nodejs)
 dnf5 install -y neovim ripgrep inotify-tools yq fd-find --setopt=install_weak_deps=False
 
